@@ -6,7 +6,7 @@ export const URLS = {
     constants_edit: '/api/constants/edit',
     users_get_all: "/api/users/get-all",
     users_block: "/api/users/block",
-    users_master: "/api/users/master",
+    users_master: "/api/users/edit/master",
     prizes_list: "/api/prizes/get-all",
     prize_edit: "/api/prizes/edit",
     prize_delete: "/api/prizes/delete",

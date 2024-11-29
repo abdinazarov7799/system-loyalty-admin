@@ -21,7 +21,7 @@ const i18config = i18n
             wait: true,
         },
         backend: {
-            loadPath: `${config.API_ROOT}/api/language/by-lang?language={{lng}}`,
+            loadPath: `${config.API_ROOT}/api/language/get-by-lang?language={{lng}}`,
             addPath: `${config.API_ROOT}/api/language/create-key`,
         },
     });

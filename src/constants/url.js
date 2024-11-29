@@ -1,7 +1,7 @@
 export const URLS = {
     sign_in: 'api/auth/sign-in',
-    translations_list: '/api/lang/all',
-    translations_edit: '/api/lang/create-edit',
+    translations_list: '/api/language/get-all',
+    translations_edit: '/api/language/create-edit',
     constants_get_all: '/api/constants/get',
     constants_edit: '/api/constants/edit',
     users_get_all: "/api/users/get-all",

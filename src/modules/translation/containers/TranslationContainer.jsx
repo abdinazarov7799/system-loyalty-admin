@@ -58,7 +58,7 @@ const TranslationContainer = () => {
             title: t("Uz"),
             key: "Uz",
             width: 400,
-            render: (props, data, index) => {
+            render: (props, data) => {
                 return <>{get(findLang(get(data, "languageSourcePs", []), "UZ"), "translation")}</>
             }
         },
@@ -66,7 +66,7 @@ const TranslationContainer = () => {
             title: t("Ru"),
             key: "Ru",
             width: 400,
-            render: (props, data, index) => {
+            render: (props, data) => {
                 return <>{get(findLang(get(data, "languageSourcePs", []), "RU"), "translation")}</>
             }
         },
@@ -75,7 +75,7 @@ const TranslationContainer = () => {
             width: 120,
             fixed: 'right',
             key: 'action',
-            render: (props, data, index) => (
+            render: (props, data) => (
                 <Button icon={<EditOutlined />} onClick={() => {
                     showModal();
                     setSelected(data)
@@ -96,7 +96,7 @@ const TranslationContainer = () => {
             </Row>
             <Table
                 columns={columns}
-                dataSource={get(data,'data.data.content',[])}
+                dataSource={get(data,'data.content',[])}
                 bordered
                 loading={isLoading}
                 size="small"
@@ -109,7 +109,7 @@ const TranslationContainer = () => {
                 <Pagination
                     current={page+1}
                     onChange={(page) => setPage(page - 1)}
-                    total={get(data,'data.data.totalPages') * 10}
+                    total={get(data,'data.totalPages') * 10}
                     showSizeChanger={false}
                 />
             </Row>

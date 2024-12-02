@@ -39,7 +39,7 @@ const EditConstants = ({setIsModalOpen,refetch,data,id}) => {
                             label={t(get(item,'key'))}
                             name={get(item,'key')}
                             rules={[{required: true,}]}
-                            initialValue={get(item,'value')}
+                            initialValue={+get(item,'value',0)}
                         >
                             <Input />
                         </Form.Item>

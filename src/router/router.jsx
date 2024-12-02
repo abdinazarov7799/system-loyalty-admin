@@ -23,6 +23,7 @@ import OverlayLoader from "../components/OverlayLoader.jsx";
 import ConstantsPage from "../modules/constants/pages/ConstantsPage.jsx";
 import UsersPage from "../modules/users/pages/UsersPage.jsx";
 import PrizesPage from "../modules/prizes/pages/PrizesPage.jsx";
+import OrdersPage from "../modules/orders/pages/OrdersPage.jsx";
 // PAGES
 
 
@@ -37,6 +38,7 @@ const Router = () => {
               <Route path={"/users"} element={<UsersPage />}/>
               <Route path={"/translations"} element={<TranslationPage />}/>
               <Route path={"/prizes"} element={<PrizesPage />}/>
+              <Route path={"/orders"} element={<OrdersPage />}/>
               <Route path={"auth/*"} element={<Navigate to={"/prizes"} replace />}/>
               <Route path={"/"} element={<Navigate to={"/prizes"} replace />}/>
               <Route path={"*"} element={<NotFoundPage />} />

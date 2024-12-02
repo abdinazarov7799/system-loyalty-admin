@@ -3,4 +3,5 @@ export const KEYS = {
     constants_get_all: "constants_get_all",
     users_get_all: "users_get_all",
     prizes_list: "prizes_list",
+    order_list: "order_list"
 };

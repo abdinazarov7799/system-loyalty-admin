@@ -11,4 +11,5 @@ export const URLS = {
     prize_edit: "/api/prizes/edit",
     prize_delete: "/api/prizes/delete",
     prize_add: "/api/prizes/add",
+    order_list: "/api/order/get-all",
 };

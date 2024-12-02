@@ -52,6 +52,13 @@ const PrizesContainer = () => {
             key: "point",
         },
         {
+            title: t("Image"),
+            key: "imageUrl",
+            dataIndex: "imageUrl",
+            width: 100,
+            render: (props) => <Image src={props} width={80} height={50} />
+        },
+        {
             title: t("Edit / Delete"),
             width: 120,
             fixed: 'right',

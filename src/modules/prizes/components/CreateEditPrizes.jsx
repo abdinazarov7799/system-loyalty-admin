@@ -31,7 +31,8 @@ const CreateEditProduct = ({itemData,setIsModalOpen}) => {
 
     useEffect(() => {
         form.setFieldsValue({
-            name: get(itemData,'name'),
+            nameUz: get(itemData,'nameUz'),
+            nameRu: get(itemData,'nameRu'),
             point: get(itemData,'point'),
         });
         setImgUrl(get(itemData,'imageUrl'));

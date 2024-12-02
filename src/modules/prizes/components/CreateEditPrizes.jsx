@@ -116,8 +116,16 @@ const CreateEditProduct = ({itemData,setIsModalOpen}) => {
                 form={form}
             >
                 <Form.Item
-                    label={t("Name")}
-                    name="name"
+                    label={t("Name uz")}
+                    name="nameUz"
+                    rules={[{required: true,}]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    label={t("Name ru")}
+                    name="nameRu"
                     rules={[{required: true,}]}
                 >
                     <Input />

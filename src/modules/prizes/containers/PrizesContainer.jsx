@@ -42,9 +42,14 @@ const PrizesContainer = () => {
             key: "id",
         },
         {
-            title: t("Name"),
-            dataIndex: "name",
-            key: "name"
+            title: t("Name uz"),
+            dataIndex: "nameUz",
+            key: "nameUz"
+        },
+        {
+            title: t("Name ru"),
+            dataIndex: "nameRu",
+            key: "nameRu"
         },
         {
             title: t("Point"),

@@ -64,6 +64,11 @@ const UsersContainer = () => {
             key: "chatId",
         },
         {
+            title: t("Poinsts"),
+            dataIndex: "points",
+            key: "points",
+        },
+        {
             title: t("Master"),
             dataIndex: "master",
             key: "master",

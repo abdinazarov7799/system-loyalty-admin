@@ -49,6 +49,11 @@ const UsersContainer = () => {
             key: "id",
         },
         {
+            title: t("Type"),
+            dataIndex: "type",
+            key: "type",
+        },
+        {
             title: t("Phone number"),
             dataIndex: "phoneNumber",
             key: "phoneNumber",
@@ -64,9 +69,19 @@ const UsersContainer = () => {
             key: "chatId",
         },
         {
+            title: t("Level"),
+            dataIndex: "level",
+            key: "level",
+        },
+        {
             title: t("Poinsts"),
             dataIndex: "points",
             key: "points",
+        },
+        {
+            title: t("Order sum"),
+            dataIndex: "orderSum",
+            key: "orderSum",
         },
         {
             title: t("Master"),

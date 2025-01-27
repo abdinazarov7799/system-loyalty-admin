@@ -11,7 +11,7 @@ import usePaginateQuery from "../../../hooks/api/usePaginateQuery.js";
 
 const ConstantsContainer = () => {
     const {t} = useTranslation();
-    const [isModalOpen,setIsModalOpen] = useState(false);
+    const [selected, setSelected] = useState(null);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
 
@@ -36,21 +36,22 @@ const ConstantsContainer = () => {
             title: t("Value"),
             dataIndex: "value",
             key: "value",
+        },
+        {
+            title: t("Edit"),
+            dataIndex: "edit",
+            key: "edit",
+            render: (props,data) => (
+                <Button icon={<EditOutlined />} onClick={() => {
+                    setSelected(data)
+                }} />
+            )
         }
     ]
 
     return (
         <Container>
             <Space direction={"vertical"} style={{width: "100%"}} size={"middle"}>
-                <Row justify={"end"}>
-                    <Button
-                        icon={<EditOutlined />}
-                        type={"primary"}
-                        onClick={() => setIsModalOpen(true)}
-                    >
-                        {t("Edit")}
-                    </Button>
-                </Row>
                 <Table
                     columns={columns}
                     dataSource={get(data,'data.content')}
@@ -71,11 +72,11 @@ const ConstantsContainer = () => {
             </Space>
             <Modal
                 title={t('Edit')}
-                open={isModalOpen}
-                onCancel={() => setIsModalOpen(false)}
+                open={!!selected}
+                onCancel={() => setSelected(null)}
                 footer={null}
             >
-                <EditConstants setIsModalOpen={setIsModalOpen} refetch={refetch} data={constants} id={get(data,'data.id',1)}/>
+                <EditConstants setSelected={setSelected} selected={selected} />
             </Modal>
         </Container>
     );

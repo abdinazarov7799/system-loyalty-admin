@@ -58,7 +58,7 @@ const GivePoint = ({selected,setSelected,setIsOpen}) => {
 
                 <Form.Item>
                     <Button block type="primary" htmlType="submit" loading={isLoading}>
-                        {t(`${!selected ? "Give" : "Give all"}`)}
+                        {t(`${!selected ? "Give all" : "Give"}`)}
                     </Button>
                 </Form.Item>
             </Form>

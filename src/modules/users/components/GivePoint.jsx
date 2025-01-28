@@ -45,6 +45,7 @@ const GivePoint = ({selected,setSelected,setIsOpen}) => {
                 <Form.Item
                     label={t("Point")}
                     name={"point"}
+                    rules={[{required: true,}]}
                 >
                     <InputNumber style={{width:'100%'}}/>
                 </Form.Item>
@@ -52,6 +53,7 @@ const GivePoint = ({selected,setSelected,setIsOpen}) => {
                 <Form.Item
                     label={t("Cause")}
                     name={"cause"}
+                    rules={[{required: true,}]}
                 >
                     <Input />
                 </Form.Item>

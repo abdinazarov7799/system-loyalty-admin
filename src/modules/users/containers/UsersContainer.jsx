@@ -119,6 +119,7 @@ const UsersContainer = () => {
             render: (props,data) => (
                 <Button icon={<PlusOutlined />} onClick={() => {
                     setSelected(data)
+                    setIsOpen(true)
                 }} />
             )
         }
@@ -160,6 +161,7 @@ const UsersContainer = () => {
                 title={`Give point ${!selected ? "all" : `${get(selected,'chatId')}`}`}
                 open={isOpen}
                 onCancel={() => setIsOpen(false)}
+                footer={null}
             >
                 <GivePoint selected={selected} setSelected={setSelected} setIsOpen={setIsOpen} />
             </Modal>

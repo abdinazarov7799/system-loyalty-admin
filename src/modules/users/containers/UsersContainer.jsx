@@ -134,7 +134,10 @@ const UsersContainer = () => {
                         allowClear
                     />
 
-                    <Button icon={<PlusOutlined />} onClick={() => setIsOpen(true)}>
+                    <Button icon={<PlusOutlined />} onClick={() => {
+                        setSelected(null)
+                        setIsOpen(true)
+                    }}>
                         {t("Give point all")}
                     </Button>
                 </Space>

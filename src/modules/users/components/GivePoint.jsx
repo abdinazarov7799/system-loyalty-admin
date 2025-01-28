@@ -18,6 +18,7 @@ const GivePoint = ({selected,setSelected,setIsOpen}) => {
                 {
                     onSuccess: () => {
                         setIsOpen(false);
+                        setSelected(null);
                     },
                 }
             );
@@ -45,7 +46,7 @@ const GivePoint = ({selected,setSelected,setIsOpen}) => {
                     label={t("Point")}
                     name={"point"}
                 >
-                    <InputNumber />
+                    <InputNumber style={{width:'100%'}}/>
                 </Form.Item>
 
                 <Form.Item

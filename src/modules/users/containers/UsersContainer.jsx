@@ -1,18 +1,23 @@
 import React, {useState} from 'react';
 import Container from "../../../components/Container.jsx";
-import {Input, Pagination, Row, Space, Switch, Table} from "antd";
+import {Button, Input, Modal, Pagination, Row, Space, Switch, Table} from "antd";
 import {get} from "lodash";
 import {useTranslation} from "react-i18next";
 import usePaginateQuery from "../../../hooks/api/usePaginateQuery.js";
 import {KEYS} from "../../../constants/key.js";
 import {URLS} from "../../../constants/url.js";
 import usePutQuery from "../../../hooks/api/usePutQuery.js";
+import {PlusOutlined} from "@ant-design/icons";
+import GivePoint from "../components/GivePoint.jsx";
 
 const UsersContainer = () => {
     const {t} = useTranslation();
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(10);
     const [searchKey,setSearchKey] = useState();
+    const [isOpen, setIsOpen] = useState(false);
+    const [selected, setSelected] = useState(null);
+
     const {data,isLoading} = usePaginateQuery({
         key: KEYS.users_get_all,
         url: URLS.users_get_all,
@@ -107,6 +112,16 @@ const UsersContainer = () => {
                 />
             )
         },
+        {
+            title: t("Give point"),
+            dataIndex: "point",
+            key: "point",
+            render: (props,data) => (
+                <Button icon={<PlusOutlined />} onClick={() => {
+                    setSelected(data)
+                }} />
+            )
+        }
     ]
     return (
         <Container>
@@ -117,6 +132,10 @@ const UsersContainer = () => {
                         onChange={(e) => setSearchKey(e.target.value)}
                         allowClear
                     />
+
+                    <Button icon={<PlusOutlined />} onClick={() => setIsOpen(true)}>
+                        {t("Give point all")}
+                    </Button>
                 </Space>
 
                 <Table
@@ -137,6 +156,13 @@ const UsersContainer = () => {
                     />
                 </Row>
             </Space>
+            <Modal
+                title={`Give point ${!selected ? "all" : `${get(selected,'chatId')}`}`}
+                open={isOpen}
+                onCancel={() => setIsOpen(false)}
+            >
+                <GivePoint selected={selected} setSelected={setSelected} setIsOpen={setIsOpen} />
+            </Modal>
         </Container>
     );
 };

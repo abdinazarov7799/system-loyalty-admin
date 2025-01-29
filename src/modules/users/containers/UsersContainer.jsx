@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Container from "../../../components/Container.jsx";
 import {Button, Input, Modal, Pagination, Row, Space, Switch, Table} from "antd";
-import {get} from "lodash";
+import {get, isEmpty} from "lodash";
 import {useTranslation} from "react-i18next";
 import usePaginateQuery from "../../../hooks/api/usePaginateQuery.js";
 import {KEYS} from "../../../constants/key.js";
@@ -13,8 +13,8 @@ import GivePoint from "../components/GivePoint.jsx";
 const UsersContainer = () => {
     const {t} = useTranslation();
     const [page, setPage] = useState(0);
-    const [size, setSize] = useState(10);
-    const [searchKey,setSearchKey] = useState();
+    const [size, setSize] = useState(100);
+    const [searchKey,setSearchKey] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState(null);
 
@@ -129,8 +129,8 @@ const UsersContainer = () => {
             <Space direction={"vertical"} style={{width: "100%"}} size={"middle"}>
                 <Space size={"middle"}>
                     <Input.Search
-                        placeholder={t("Master phone number")}
-                        onChange={(e) => setSearchKey(e.target.value)}
+                        placeholder={t("Phone number")}
+                        onChange={(e) => setSearchKey(isEmpty(e.target.value) ? null : e.target.value)}
                         allowClear
                     />
 

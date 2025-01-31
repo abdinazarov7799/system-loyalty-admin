@@ -1,14 +1,14 @@
 import React from 'react';
-import usePutQuery from "../../../hooks/api/usePutQuery.js";
 import {KEYS} from "../../../constants/key.js";
 import {Button, Form, Input, InputNumber} from "antd";
 import {useTranslation} from "react-i18next";
 import {get} from "lodash";
+import usePostQuery from "../../../hooks/api/usePostQuery.js";
 
 const GivePoint = ({selected,setSelected,setIsOpen}) => {
     const {t} = useTranslation();
 
-    const {mutate,isLoading} = usePutQuery({
+    const {mutate,isLoading} = usePostQuery({
         listKeyId: KEYS.users_get_all
     })
     const onFinish = (values) => {

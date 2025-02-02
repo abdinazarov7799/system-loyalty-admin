@@ -58,7 +58,7 @@ const OrdersContainer = () => {
             dataIndex: "accepted",
             key: "accepted",
             render: (props, data) => {
-                return <Checkbox value={props} disabled/>
+                return <Checkbox checked={props} disabled/>
             }
         },
     ]

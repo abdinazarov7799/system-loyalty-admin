@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Container from "../../../components/Container.jsx";
-import {Button, Input, Modal, Pagination, Row, Select, Space, Switch, Table} from "antd";
-import {get, isEmpty} from "lodash";
+import {Button, Checkbox, Input, Modal, Pagination, Row, Select, Space, Switch, Table} from "antd";
+import {get, isEmpty, isNil} from "lodash";
 import {useTranslation} from "react-i18next";
 import usePaginateQuery from "../../../hooks/api/usePaginateQuery.js";
 import {KEYS} from "../../../constants/key.js";
@@ -141,10 +141,14 @@ const UsersContainer = () => {
         <Container>
             <Space direction={"vertical"} style={{width: "100%"}} size={"middle"}>
                 <Space size={"middle"}>
-                    <Button icon={<PlusOutlined />} onClick={() => {
-                        setSelected(null)
-                        setIsOpen(true)
-                    }}>
+                    <Button
+                        icon={<PlusOutlined />}
+                        type={"primary"}
+                        onClick={() => {
+                            setSelected(null)
+                            setIsOpen(true)
+                        }}
+                    >
                         {t("Give point all")}
                     </Button>
 
@@ -158,10 +162,25 @@ const UsersContainer = () => {
                         options={config.USER_TYPES?.map(type => ({label: type, value: type}))}
                         value={type}
                         placeholder={t("Type")}
+                        style={{ width: 150 }}
                         allowClear
                         onSelect={(type) => setType(type)}
                         onClear={() => setType(null)}
                     />
+
+                    <Checkbox
+                        onChange={(e) => setIsMaster(e.target.checked ? true : null)}
+                        checked={!isNil(isMaster)}
+                    >
+                        {t("is Master")}
+                    </Checkbox>
+
+                    <Checkbox
+                        onChange={(e) => setIsBlocked(e.target.checked ? true : null)}
+                        checked={!isNil(isBlocked)}
+                    >
+                        {t("is Blocked")}
+                    </Checkbox>
                 </Space>
 
                 <Table

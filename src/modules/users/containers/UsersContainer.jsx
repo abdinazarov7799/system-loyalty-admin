@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Container from "../../../components/Container.jsx";
-import {Button, Input, Modal, Pagination, Row, Space, Switch, Table} from "antd";
+import {Button, Input, Modal, Pagination, Row, Select, Space, Switch, Table} from "antd";
 import {get, isEmpty} from "lodash";
 import {useTranslation} from "react-i18next";
 import usePaginateQuery from "../../../hooks/api/usePaginateQuery.js";
@@ -9,6 +9,7 @@ import {URLS} from "../../../constants/url.js";
 import usePutQuery from "../../../hooks/api/usePutQuery.js";
 import {PlusOutlined} from "@ant-design/icons";
 import GivePoint from "../components/GivePoint.jsx";
+import config from "../../../config.js";
 
 const UsersContainer = () => {
     const {t} = useTranslation();
@@ -17,6 +18,12 @@ const UsersContainer = () => {
     const [searchKey,setSearchKey] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState(null);
+    const [type, setType] = useState(null);
+    const [isMaster, setIsMaster] = useState(null);
+    const [isBlocked, setIsBlocked] = useState(null);
+    const [pointSort, setPointSort] = useState(null);
+    const [levelSort, setLevelSort] = useState(null);
+    const [orderSumSort, setOrderSumSort] = useState(null);
 
     const {data,isLoading} = usePaginateQuery({
         key: KEYS.users_get_all,
@@ -24,7 +31,13 @@ const UsersContainer = () => {
         params: {
             params: {
                 size,
-                masterPhoneNumber: searchKey
+                masterPhoneNumber: searchKey,
+                type,
+                isMaster,
+                isBlocked,
+                pointSort,
+                levelSort,
+                orderSumSort
             }
         },
         page
@@ -128,18 +141,27 @@ const UsersContainer = () => {
         <Container>
             <Space direction={"vertical"} style={{width: "100%"}} size={"middle"}>
                 <Space size={"middle"}>
-                    <Input.Search
-                        placeholder={t("Phone number")}
-                        onChange={(e) => setSearchKey(isEmpty(e.target.value) ? null : e.target.value)}
-                        allowClear
-                    />
-
                     <Button icon={<PlusOutlined />} onClick={() => {
                         setSelected(null)
                         setIsOpen(true)
                     }}>
                         {t("Give point all")}
                     </Button>
+
+                    <Input.Search
+                        placeholder={t("Phone number")}
+                        onChange={(e) => setSearchKey(isEmpty(e.target.value) ? null : e.target.value)}
+                        allowClear
+                    />
+
+                    <Select
+                        options={config.USER_TYPES?.map(type => ({label: type, value: type}))}
+                        value={type}
+                        placeholder={t("Type")}
+                        allowClear
+                        onSelect={(type) => setType(type)}
+                        onClear={() => setType(null)}
+                    />
                 </Space>
 
                 <Table

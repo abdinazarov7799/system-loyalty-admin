@@ -168,20 +168,6 @@ const UsersContainer = () => {
                         onClear={() => setType(null)}
                     />
 
-                    <Checkbox
-                        onChange={(e) => setIsMaster(e.target.checked ? true : null)}
-                        checked={!isNil(isMaster)}
-                    >
-                        {t("is Master")}
-                    </Checkbox>
-
-                    <Checkbox
-                        onChange={(e) => setIsBlocked(e.target.checked ? true : null)}
-                        checked={!isNil(isBlocked)}
-                    >
-                        {t("is Blocked")}
-                    </Checkbox>
-
                     <Select
                         options={config.SORTS?.map(type => ({label: type, value: type}))}
                         value={pointSort}
@@ -210,6 +196,19 @@ const UsersContainer = () => {
                         onSelect={(type) => setOrderSumSort(type)}
                         onClear={() => setOrderSumSort(null)}
                     />
+                    <Checkbox
+                        onChange={(e) => setIsMaster(e.target.checked ? true : null)}
+                        checked={!isNil(isMaster)}
+                    >
+                        {t("is Master")}
+                    </Checkbox>
+
+                    <Checkbox
+                        onChange={(e) => setIsBlocked(e.target.checked ? true : null)}
+                        checked={!isNil(isBlocked)}
+                    >
+                        {t("is Blocked")}
+                    </Checkbox>
                 </Space>
 
                 <Table

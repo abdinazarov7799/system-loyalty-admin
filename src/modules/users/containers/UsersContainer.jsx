@@ -181,6 +181,35 @@ const UsersContainer = () => {
                     >
                         {t("is Blocked")}
                     </Checkbox>
+
+                    <Select
+                        options={config.SORTS?.map(type => ({label: type, value: type}))}
+                        value={pointSort}
+                        placeholder={t("Point sort")}
+                        style={{ width: 150 }}
+                        allowClear
+                        onSelect={(value) => setPointSort(value)}
+                        onClear={() => setPointSort(null)}
+                    />
+
+                    <Select
+                        options={config.SORTS?.map(type => ({label: type, value: type}))}
+                        value={levelSort}
+                        placeholder={t("Level sort")}
+                        style={{ width: 150 }}
+                        allowClear
+                        onSelect={(value) => setLevelSort(value)}
+                        onClear={() => setLevelSort(null)}
+                    />
+                    <Select
+                        options={config.SORTS?.map(type => ({label: type, value: type}))}
+                        value={orderSumSort}
+                        placeholder={t("Order sum sort")}
+                        style={{ width: 150 }}
+                        allowClear
+                        onSelect={(type) => setOrderSumSort(type)}
+                        onClear={() => setOrderSumSort(null)}
+                    />
                 </Space>
 
                 <Table

@@ -17,12 +17,12 @@ const PrizesContainer = () => {
     const [isCreateModalOpenCreate, setIsCreateModalOpen] = useState(false)
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
-    const {data,isLoading} = usePaginateQuery({
+    const {data,isLoading,isFetching} = usePaginateQuery({
         key: KEYS.prizes_list,
         url: URLS.prizes_list,
         params: {
             params: {
-                size: 10,
+                size: 50,
             }
         },
         page
@@ -124,7 +124,7 @@ const PrizesContainer = () => {
                     bordered
                     size={"middle"}
                     pagination={false}
-                    loading={isLoading}
+                    loading={isLoading || isFetching}
                 />
 
                 <Row justify={"end"} style={{marginTop: 10}}>
